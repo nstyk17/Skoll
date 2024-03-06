@@ -12,11 +12,12 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 moveDirection;
 
     private bool sprinting;
+    public bool isFlipped;
 
     void Start()
     {
 
-        spriteRenderer = GetComponent<SpriteRenderer>();    
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     
@@ -43,10 +44,12 @@ public class PlayerMovement : MonoBehaviour
 
         if (moveX < 0)
         {
+            isFlipped = true;
             spriteRenderer.flipX = true;
         }
         else if(moveX >= 1)
         {
+            isFlipped = false;
             spriteRenderer.flipX = false;
         }
 
@@ -59,6 +62,7 @@ public class PlayerMovement : MonoBehaviour
             {
             sprinting = false;
         }
+
     }
 
     void Move()
