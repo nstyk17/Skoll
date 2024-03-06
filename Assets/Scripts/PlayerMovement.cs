@@ -11,13 +11,12 @@ public class PlayerMovement : MonoBehaviour
     public float movSpeed;
     private Vector2 moveDirection;
 
+    private bool sprinting;
 
     void Start()
     {
 
-        spriteRenderer = GetComponent<SpriteRenderer>();
-
-        
+        spriteRenderer = GetComponent<SpriteRenderer>();    
     }
 
     
@@ -50,12 +49,34 @@ public class PlayerMovement : MonoBehaviour
         {
             spriteRenderer.flipX = false;
         }
+
+        if (Input.GetKeyDown("left shift"))
+        {
+            sprinting = true;
+
+        }
+        else if (Input.GetKeyUp("left shift"))
+            {
+            sprinting = false;
+        }
     }
 
     void Move()
     {
         rb.velocity = new Vector2(moveDirection.x * movSpeed, moveDirection.y * movSpeed);
-        animator.SetFloat("Speed", (Mathf.Abs(moveDirection.x) + Mathf.Abs(moveDirection.y)));
+        animator.SetFloat("Speed", (Mathf.Abs(rb.velocity.x) + Mathf.Abs(rb.velocity.y)));
+
+        if (sprinting == true)
+        {
+            movSpeed = 7;
+            animator.SetBool("isSprinting", true);
+
+        }
+        else if (sprinting ==false)
+        {
+            movSpeed = 3;
+            animator.SetBool("isSprinting", false);
+        }
     }
 
 
