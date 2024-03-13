@@ -23,11 +23,11 @@ public class Spawn : MonoBehaviour
     {
         if (pm.isFlipped)
         {
-            dropPos = -2;
+            dropPos = -1;
         }
         else
         {
-            dropPos = 2;
+            dropPos = 1;
         }
 
     }
