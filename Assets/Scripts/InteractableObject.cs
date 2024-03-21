@@ -6,11 +6,11 @@ public class InteractableObject : Colidable
 {
     //public GameObject ob;
 
-    [SerializeField] private bool interacted = false;
+    [SerializeField] public bool interacted = false;
     [SerializeField] private bool hasReward = false;
     [SerializeField] private bool destroyObject = true;
 
-
+    [SerializeField] private GameObject interactingObject;
     [SerializeField] private GameObject slot;
     [SerializeField] private GameObject ob;
     [SerializeField] private GameObject[] rewards;
@@ -23,43 +23,41 @@ public class InteractableObject : Colidable
     {
         //base. accesses the parent's properties
         //base.OnCollided(collidedObject);
+        if (collidedObject == interactingObject) { 
 
-        if (Input.GetKey(KeyCode.E))
-        {
-            if (slot.transform.childCount > 0)
+            if (Input.GetKey(KeyCode.E))
             {
-                if (interacted == false)
+                if (slot.transform.childCount > 0)
                 {
+                    if (interacted == false)
+                    {
 
-                    if (slot.transform.GetChild(0).gameObject.name == ob.name) {
-                        if (hasReward == true)
-                        {
+                        if (slot.transform.GetChild(0).gameObject.name == ob.name) {
+
                             interacted = true;
-                            Vector2 dropPosition = new Vector2(transform.position.x - dropPosX, transform.position.y - dropPosY);
-                            chosenReward = Random.Range(0, rewards.Length);
-                            Instantiate(rewards[chosenReward], dropPosition, Quaternion.identity);
 
-                            if (destroyObject == true) Destroy(this.gameObject);
+                            if (hasReward == true)
+                            {
+                                interacted = true;
+                                Vector2 dropPosition = new Vector2(transform.position.x - dropPosX, transform.position.y - dropPosY);
+                                chosenReward = Random.Range(0, rewards.Length);
+                                Instantiate(rewards[chosenReward], dropPosition, Quaternion.identity);
+
+                                if (destroyObject == true) Destroy(this.gameObject);
+                            }
+                            else if (hasReward == false && destroyObject == true)
+                            {
+                                Destroy(this.gameObject);
+                            }
                         }
+
+
                     }
-                    
-
                 }
+
             }
-
-            //if (interacted == false)
-            //{
-            //    interacted = true;
-            //}
-            //OnInteract();
-        }
-
+    }
       
     }
 
-    protected virtual void OnInteract()
-    {
-        
-
-    }
 }
