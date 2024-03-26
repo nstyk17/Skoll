@@ -8,11 +8,13 @@ public class PlayerMovement : MonoBehaviour
     public Animator animator;
     public SpriteRenderer spriteRenderer;
 
-    public float movSpeed;
+    private float movSpeed;
     private Vector2 moveDirection;
 
     private bool sprinting;
     public bool isFlipped;
+
+    private bool stop;
 
     void Start()
     {
@@ -35,8 +37,8 @@ public class PlayerMovement : MonoBehaviour
 
     void ProcessInputs()
     {
+
         float moveX = Input.GetAxisRaw("Horizontal");
-        //spriteRenderer.flipX = rb.velocity.x < 0f;
 
         float moveY = Input.GetAxisRaw("Vertical");
 
@@ -81,6 +83,14 @@ public class PlayerMovement : MonoBehaviour
             movSpeed = 3;
             animator.SetBool("isSprinting", false);
         }
+    }
+
+    public void StopMoving()
+    {
+        movSpeed = 0f;
+        rb.velocity = new Vector2(0, 0);
+        animator.SetBool("isSprinting", false);
+        animator.SetFloat("Speed", 0); 
     }
 
 

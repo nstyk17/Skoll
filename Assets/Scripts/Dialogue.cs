@@ -20,18 +20,22 @@ public class Dialogue : MonoBehaviour
 
     public float wordSpeed;
     public bool playerIsClose;
+    public bool hasPressedE;
 
 
     void Start()
     {
         nameField.text = dialogueName;
+        hasPressedE = false;
 
     }
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.E) && playerIsClose)
+        if (Input.GetKeyDown(KeyCode.E) && playerIsClose && hasPressedE == false)
         {
+            hasPressedE = true;
+
             if (dialogueBox.activeInHierarchy)
             {
                 zeroText();
@@ -73,6 +77,7 @@ public class Dialogue : MonoBehaviour
         }
         else
         {
+            hasPressedE = false;
             zeroText();
         }
     }
@@ -98,6 +103,7 @@ public class Dialogue : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerIsClose = false;
+            hasPressedE = false;
             zeroText();
         }
     }
