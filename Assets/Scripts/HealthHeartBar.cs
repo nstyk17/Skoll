@@ -13,6 +13,7 @@ public class HealthHeartBar : MonoBehaviour
     private void Start()
     {
         DrawHearts();
+        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
     }
 
     public void DrawHearts()

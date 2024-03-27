@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8350283097922256508}
   - component: {fileID: 3444347165130713375}
   - component: {fileID: 7632645901427631094}
+  - component: {fileID: 4031507819776044059}
   m_Layer: 5
   m_Name: Orange_Img
   m_TagString: Untagged
@@ -88,5 +89,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b4b0b0e62200ea4c9b042a45edbaac7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 8327143100799360632, guid: 68875eb87e70f3a429fbb9c22ea43750, type: 3}
+  item: {fileID: 8129713969509713220, guid: 4e8555945a737824a9787c585976203c, type: 3}
   pm: {fileID: 0}
+--- !u!114 &4031507819776044059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4977653098629070940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46a5c52ef33d05c46ac2464372c9e377, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amountHealed: 2
